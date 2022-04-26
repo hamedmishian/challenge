@@ -6,7 +6,9 @@ import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 function Page() {
   const [data, setData] = useState();
   useEffect(() => {
-    fetch("http://localhost:3000/data")
+    fetch(
+      "https://dataguard.blob.core.windows.net/challenges/plugins/fe-challenge.json"
+    )
       .then(res => res.json())
       .then(res => setData(res))
       .catch(error => console.log(error));
