@@ -14,8 +14,8 @@ function Page() {
       .catch(error => console.log(error));
   }, []);
 
-  const tabData = data && Object.values(data?.tabdata);
-  const plugins = data && Object.values(data?.plugins);
+  const tabData = data && Object.values(data?.data?.tabdata);
+  const plugins = data && Object.values(data?.data?.plugins);
 
   // const activeMarketing = tabData?.filter(
   //   item => item?.title === "Marketing"
