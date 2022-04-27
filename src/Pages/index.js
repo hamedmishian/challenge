@@ -46,6 +46,20 @@ function Page() {
     disabledFinance
   );
 
+  const activePersonnel = tabData?.filter(
+    item => item?.title === "Personnel"
+  )[0]?.active;
+  const inactivePersonnel = tabData?.filter(
+    item => item?.title === "Personnel"
+  )[0]?.inactive;
+  const disabledPersonnel = tabData?.filter(
+    item => item?.title === "Personnel"
+  )[0]?.disabled;
+  const personnelPlugins = activePersonnel?.concat(
+    inactivePersonnel,
+    disabledPersonnel
+  );
+
   return (
     <Switch>
       <Route path="/Marketing">
@@ -69,6 +83,10 @@ function Page() {
         <Drawer
           pathname={pathname}
           setPathname={setPathname}
+          active={activePersonnel && activePersonnel}
+          inactive={inactivePersonnel && inactivePersonnel}
+          disabled={disabledPersonnel && disabledPersonnel}
+          pluginsItems={personnelPlugins && personnelPlugins}
           setData={setData}
           tabData={tabData && tabData}
           plugins={plugins && plugins}
