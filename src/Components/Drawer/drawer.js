@@ -58,29 +58,29 @@ export default function ResponsiveDrawer(props) {
 
       <List sx={{ padding: "0" }}>
         {tabData &&
-          tabData.map((text, index) => (
+          tabData.map((item, index) => (
             <ListItem
               button
-              key={text.title}
+              key={item?.title}
               onClick={() => {
-                setPathname(`/${text?.title.toLowerCase()}`);
-                history.push(`/${text?.title.toLowerCase()}`);
+                setPathname(`/${item?.title.toLowerCase()}`);
+                history.push(`/${item?.title.toLowerCase()}`);
               }}
               selected={
-                text?.title?.toLowerCase() ===
+                item?.title?.toLowerCase() ===
                 pathname?.toLowerCase().substring(1)
               }
             >
               <ListItemIcon>
-                {text.title === "Marketing" ? (
+                {item?.title === "Marketing" ? (
                   <AppsIcon />
-                ) : text.title === "Finance" ? (
+                ) : item?.title === "Finance" ? (
                   <CookieIcon />
                 ) : (
                   <AccountBoxIcon />
                 )}
               </ListItemIcon>
-              <ListItemText primary={text.title} />
+              <ListItemText primary={item?.title} />
             </ListItem>
           ))}
         <ListItem

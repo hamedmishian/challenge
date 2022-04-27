@@ -1,6 +1,6 @@
 import Drawer from "../Components/Drawer/drawer";
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { useLocation } from "react-router-dom";
 
@@ -11,15 +11,17 @@ function Page() {
 
   useEffect(() => {
     fetch(
-      "https://dataguard.blob.core.windows.net/challenges/plugins/fe-challenge.json"
+      // "https://dataguard.blob.core.windows.net/challenges/plugins/fe-challenge.json"
+      "http://localhost:3000/data"
     )
       .then(res => res.json())
       .then(res => setData(res))
       .catch(error => console.log(error));
   }, []);
+  console.log(data);
 
-  const tabData = data && Object.values(data?.data?.tabdata);
-  const plugins = data && Object.values(data?.data?.plugins);
+  const tabData = data && Object.values(data?.tabdata);
+  const plugins = data && Object.values(data?.plugins);
 
   const activeMarketing = tabData?.filter(
     item => item?.title === "Marketing"
