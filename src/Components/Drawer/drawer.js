@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -26,21 +26,25 @@ export default function ResponsiveDrawer(props) {
     window,
     pluginsItems,
     tabData,
-    // active,
-    // inactive,
-    // disabled,
+    pathname,
+    setPathname,
+    active,
+    inactive,
+    disabled,
     plugins,
-    data
+    data,
+    setData
   } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const [checked, setChecked] = useState(true);
   const history = useHistory();
-  const location = useLocation();
-  const [pathname, setPathname] = useState(location?.pathname);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
+  console.log(pluginsItems);
   const drawer = (
     <div>
       <Toolbar sx={{ display: "flex", justifyContent: "center" }}>
@@ -59,8 +63,8 @@ export default function ResponsiveDrawer(props) {
               button
               key={text.title}
               onClick={() => {
-                setPathname(`/${text.title.toLowerCase()}`);
-                history.push(`/${text.title.toLowerCase()}`);
+                setPathname(`/${text?.title.toLowerCase()}`);
+                history.push(`/${text?.title.toLowerCase()}`);
               }}
               selected={
                 text?.title?.toLowerCase() ===
@@ -205,6 +209,12 @@ export default function ResponsiveDrawer(props) {
         <Toolbar />
 
         <Boxsection
+          checked={checked}
+          setChecked={setChecked}
+          active={active}
+          inactive={inactive}
+          setPathname={setPathname}
+          setData={setData}
           data={data}
           plugins={plugins}
           pluginsItems={pluginsItems && pluginsItems}

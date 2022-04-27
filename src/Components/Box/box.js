@@ -5,12 +5,21 @@ import { Typography } from "@mui/material";
 import Switch from "../Switch/switch";
 import Grid from "@mui/material/Grid";
 
-export default function Variants({ pluginsItems, tabData, plugins, data }) {
-  const [checked, setChecked] = useState(true);
+export default function Variants({
+  pluginsItems,
+  tabData,
+  plugins,
+  data,
+  active,
+  inactive,
+  checked,
+  setChecked,
+  setData
+}) {
   const handleSwitch = () => {
-    setChecked(checked && checked);
+    setChecked(checked && !checked);
   };
-
+  console.log(tabData);
   return (
     <Box
       sx={{
@@ -19,10 +28,11 @@ export default function Variants({ pluginsItems, tabData, plugins, data }) {
       }}
     >
       <Grid container spacing={4}>
-        {plugins?.map(plugin => {
+        {pluginsItems?.sort()?.map((plugin, index) => {
           return (
             <Grid item xs={12} sm={12} md={6} lg={4}>
               <Paper
+                key={index}
                 variant="elevation"
                 sx={{
                   borderRadius: "2%",
@@ -44,11 +54,24 @@ export default function Variants({ pluginsItems, tabData, plugins, data }) {
                     fontWeight={500}
                     fontFamily={"sans-serif"}
                   >
-                    {plugin?.title}
+                    {
+                      plugins?.find(
+                        item =>
+                          item?.title
+                            ?.replace(/P/g, "p")
+                            ?.replace(/\s/g, "") === plugin
+                      )?.title
+                    }
                   </Typography>
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <Switch
-                      checked={checked}
+                      checked={
+                        active?.find(item => item === plugin)
+                          ? checked
+                          : inactive?.find(item => item === plugin)
+                          ? !checked
+                          : !checked
+                      }
                       setChecked={setChecked}
                       onChange={handleSwitch}
                     />
@@ -65,7 +88,13 @@ export default function Variants({ pluginsItems, tabData, plugins, data }) {
                   fontFamily={"sans-serif"}
                   sx={{ marginTop: "30px" }}
                 >
-                  {plugin?.description}
+                  {
+                    plugins?.find(
+                      item =>
+                        item?.title?.replace(/P/g, "p")?.replace(/\s/g, "") ===
+                        plugin
+                    )?.description
+                  }
                 </Typography>
               </Paper>
             </Grid>

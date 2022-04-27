@@ -58,7 +58,7 @@ const IOSSwitch = styled(props => (
 export default function CustomizedSwitches({ checked, setChecked, onChange }) {
   const handleChange = () => {
     setChecked && setChecked(!checked);
-    onChange && onChange();
+    // onChange && onChange();
   };
 
   return (
@@ -66,9 +66,9 @@ export default function CustomizedSwitches({ checked, setChecked, onChange }) {
       <FormControlLabel
         control={
           <IOSSwitch
-            // checked={checked && checked}
-            // onChange={handleChange}
-            defaultChecked
+            checked={checked && checked}
+            onChange={handleChange}
+            // defaultChecked
           />
         }
       />
