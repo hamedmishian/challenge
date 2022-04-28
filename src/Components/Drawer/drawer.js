@@ -212,6 +212,7 @@ export default function ResponsiveDrawer(props) {
           checked={checked}
           setChecked={setChecked}
           active={active}
+          disabled={disabled}
           inactive={inactive}
           setPathname={setPathname}
           setData={setData}

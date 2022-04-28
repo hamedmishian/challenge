@@ -11,15 +11,16 @@ export default function Variants({
   plugins,
   data,
   active,
+  disabled,
   inactive,
   checked,
   setChecked,
   setData
 }) {
-  const handleSwitch = () => {
+  const handleSwitch = id => {
     setChecked(checked && !checked);
   };
-  console.log(tabData);
+
   return (
     <Box
       sx={{
@@ -63,8 +64,17 @@ export default function Variants({
                       )?.title
                     }
                   </Typography>
-                  <div style={{ display: "flex", alignItems: "center" }}>
+                  <div
+                    style={{
+                      textAlign: "center",
+                      alignItems: "center",
+                      width: "100px"
+                    }}
+                  >
                     <Switch
+                      disabled={
+                        disabled?.find(item => item === plugin) ? true : false
+                      }
                       checked={
                         active?.find(item => item === plugin)
                           ? checked
@@ -77,10 +87,21 @@ export default function Variants({
                     />
                     <Typography
                       variant="body2"
-                      color={"green"}
+                      sx={{ display: "block" }}
+                      color={
+                        active?.find(item => item === plugin)
+                          ? "green"
+                          : inactive?.find(item => item === plugin)
+                          ? "red"
+                          : "gray"
+                      }
                       fontWeight={600}
                     >
-                      Alowed
+                      {active?.find(item => item === plugin)
+                        ? "Alowed"
+                        : inactive?.find(item => item === plugin)
+                        ? "Blocked"
+                        : "Inactive"}
                     </Typography>
                   </div>
                 </div>

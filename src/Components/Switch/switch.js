@@ -13,6 +13,7 @@ const IOSSwitch = styled(props => (
   "& .MuiSwitch-switchBase": {
     padding: 0,
     margin: 2,
+
     transitionDuration: "300ms",
     "&.Mui-checked": {
       transform: "translateX(16px)",
@@ -55,7 +56,12 @@ const IOSSwitch = styled(props => (
   }
 }));
 
-export default function CustomizedSwitches({ checked, setChecked, onChange }) {
+export default function CustomizedSwitches({
+  checked,
+  setChecked,
+  onChange,
+  disabled
+}) {
   const handleChange = () => {
     setChecked && setChecked(!checked);
     // onChange && onChange();
@@ -64,10 +70,12 @@ export default function CustomizedSwitches({ checked, setChecked, onChange }) {
   return (
     <FormGroup>
       <FormControlLabel
+        sx={{ margin: "0", justifyContent: "center", marginBottom: "10px" }}
         control={
           <IOSSwitch
             checked={checked && checked}
             onChange={handleChange}
+            disabled={disabled}
             // defaultChecked
           />
         }
