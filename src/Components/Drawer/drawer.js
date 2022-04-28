@@ -124,7 +124,8 @@ export default function ResponsiveDrawer(props) {
       >
         <Toolbar
           sx={{
-            backgroundColor: "white"
+            backgroundColor: "white",
+            paddin: 0
           }}
         >
           <IconButton
@@ -166,7 +167,7 @@ export default function ResponsiveDrawer(props) {
           }}
           sx={{
             display: { xs: "block", sm: "none" },
-            backgroundColor: "#E9EAEB",
+            backgroundColor: "transparent",
             "& .MuiList-root .Mui-selected": {
               borderLeft: `7px solid red`,
               backgroundColor: "white"

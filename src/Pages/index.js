@@ -76,9 +76,7 @@ function Page() {
           plugins={plugins && plugins}
         />
       </Route>
-      {/* <Route path="/">
-          <Drawer tabData={tabData && tabData} plugins={plugins && plugins} />
-        </Route> */}
+
       <Route path="/personnel">
         <Drawer
           pathname={pathname}
