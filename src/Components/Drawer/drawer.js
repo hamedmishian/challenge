@@ -70,6 +70,7 @@ export default function ResponsiveDrawer(props) {
               onClick={() => {
                 setPathname(`/${item?.title.toLowerCase()}`);
                 history.push(`/${item?.title.toLowerCase()}`);
+                setMobileOpen(!mobileOpen);
               }}
               selected={
                 item?.title?.toLowerCase() ===
