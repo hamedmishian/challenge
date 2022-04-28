@@ -52,6 +52,11 @@ export default function Variants({
                 >
                   <Typography
                     variant="h6"
+                    color={
+                      disabled?.find(item => item === plugin)
+                        ? "lightgray"
+                        : "black"
+                    }
                     fontWeight={500}
                     fontFamily={"sans-serif"}
                   >
@@ -93,7 +98,7 @@ export default function Variants({
                           ? "green"
                           : inactive?.find(item => item === plugin)
                           ? "red"
-                          : "gray"
+                          : "lightgray"
                       }
                       fontWeight={600}
                     >
@@ -106,6 +111,11 @@ export default function Variants({
                   </div>
                 </div>
                 <Typography
+                  color={
+                    disabled?.find(item => item === plugin)
+                      ? "lightgray"
+                      : "black"
+                  }
                   fontFamily={"sans-serif"}
                   sx={{ marginTop: "30px" }}
                 >
