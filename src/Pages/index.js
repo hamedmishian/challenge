@@ -10,14 +10,16 @@ function Page() {
   const [pathname, setPathname] = useState(location?.pathname);
 
   useEffect(() => {
-    fetch("http://localhost:3000/data")
+    fetch(
+      "https://dataguard.blob.core.windows.net/challenges/plugins/fe-challenge.json"
+    )
       .then(res => res.json())
       .then(res => setData(res))
       .catch(error => console.log(error));
   }, []);
 
-  const tabData = data && Object.values(data?.tabdata);
-  const plugins = data && Object.values(data?.plugins);
+  const tabData = data && Object.values(data?.data?.tabdata);
+  const plugins = data && Object.values(data?.data?.plugins);
 
   const activeMarketing = tabData?.filter(
     item => item?.title === "Marketing"
