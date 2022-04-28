@@ -39,12 +39,17 @@ export default function ResponsiveDrawer(props) {
 
   const [checked, setChecked] = useState(true);
   const history = useHistory();
+  const location = useLocation();
+  console.log(pathname?.toLowerCase().substring(1));
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  console.log(pluginsItems);
+  useEffect(() => {
+    setPathname(location?.pathname);
+  }, []);
+
   const drawer = (
     <div>
       <Toolbar sx={{ display: "flex", justifyContent: "center" }}>

@@ -62,7 +62,7 @@ function Page() {
 
   return (
     <Switch>
-      <Route path="/Marketing">
+      <Route path="/marketing">
         <Drawer
           pathname={pathname}
           setPathname={setPathname}
